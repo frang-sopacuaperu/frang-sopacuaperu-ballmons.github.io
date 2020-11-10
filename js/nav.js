@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
       if (this.readyState === 4) {
-        if (this.status != 200) return;
+        if (this.status !== 200) return;
         document.querySelectorAll(".topnav, .sidenav").forEach(function (elm) {
           elm.innerHTML = xhttp.responseText;
         });
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Load page content
-  const page = window.location.hash.substr(1);
+  let page = window.location.hash.substr(1);
   if (page === "") page = "standing";
   if (page === "squad") page = "squad";
   if (page === "team") page = "team";

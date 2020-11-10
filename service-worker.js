@@ -20,13 +20,13 @@ workbox.precaching.precacheAndRoute([
   { url: "/images/favicon.png", revision: "1" },
   { url: "/manifest.json", revision: "1" },
   { url: "/css/materialize.min.css", revision: "1" },
-  { url: "/push.js", revision: "3" },
+  { url: "/push.js", revision: "4" },
   { url: "/js/api.js", revision: "1" },
   { url: "/js/db.js", revision: "1" },
   { url: "/js/idb.js", revision: "1" },
   { url: "/js/materialize.min.js", revision: "1" },
-  { url: "/js/nav.js", revision: "1" },
-  { url: "/js/sw-register.js", revision: "3" },
+  { url: "/js/nav.js", revision: "2" },
+  { url: "/js/sw-register.js", revision: "4" },
   {
     url: "https://fonts.googleapis.com/icon?family=Material+Icons",
     revision: "1",
@@ -41,6 +41,7 @@ workbox.precaching.precacheAndRoute([
 workbox.routing.registerRoute(
   new RegExp("https://api.football-data.org/v2/"),
   workbox.strategies.staleWhileRevalidate({
+    cacheName: "api-data",
     plugins: [
       new workbox.cacheableResponse.Plugin({
         statuses: [200],
